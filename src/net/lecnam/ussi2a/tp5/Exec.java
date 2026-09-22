@@ -44,7 +44,7 @@ public class Exec {
             surfaceTotale += f.retourneSurface();
         }
         System.out.println("Surface totale des figures : " + surfaceTotale);
-        
+
         Figures plusGrande = figures[0];
         for (int i = 1; i < figures.length; i++) {
             if (figures[i].retourneSurface() > plusGrande.retourneSurface()) {
