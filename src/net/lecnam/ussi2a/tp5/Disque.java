@@ -1,7 +1,7 @@
 package net.lecnam.ussi2a.tp5;
 
 
-public class Disque {
+public class Disque extends Figures {
     // Attributs
     private Point centre;
     private double rayon;
@@ -34,7 +34,6 @@ public class Disque {
     }
 
     // Retourne vrai si le point donné est à l'intérieur du disque
-    // (si la distance entre le centre et le point est <= au rayon)
     public boolean contient(Point p) {
         return this.centre.retourneDistance(p) <= this.rayon;
     }

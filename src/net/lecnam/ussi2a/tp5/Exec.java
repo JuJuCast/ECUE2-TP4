@@ -10,15 +10,14 @@ public class Exec {
 
     public static void main(String[] args) {
 
-        Rectangle r = new Rectangle(2,3,1.2,9);
-        Rectangle r2 = new Rectangle(2,4,0,0);
+        Rectangle r = new Rectangle(2, 3, 1.2, 9);
+        Disque d = new Disque(0, 0, 5); // Surface ≈ 78.54
 
         dessin.ajout(r);
-        dessin.ajout(r2);
+        dessin.ajout(d);
 
-        System.out.println(dessin.retournePlusGrand());
-
+        System.out.println("Surface totale : " + dessin.retourneSurfaceTotale());
+        System.out.println("Plus grande figure : " + dessin.retournePlusGrand());
     }
-
 
 }
