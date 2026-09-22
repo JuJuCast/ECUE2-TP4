@@ -56,6 +56,26 @@ public class Exec {
         System.out.println(plusGrande);
         System.out.println("Sa surface : " + plusGrande.retourneSurface());
 
+        Figures f1 = new Rectangle(10, 5, 0, 0);
+        Figures f2 = new RectangleIncline(10, 5, 0, 0, 45);
+
+        Figures[] mesFigures = new Figures[2];
+        mesFigures[0] = f1;
+        mesFigures[1] = f2;
+
+        System.out.println("Surface rectangle incliné = "+f2.retourneSurface());
+
+        Figures monCarre = new Carre(5.0, 0.0, 0.0);
+
+        System.out.println("Surface : " + monCarre.retourneSurface());
+        System.out.println("Périmètre : " + monCarre.retournePerimetre());
+
+        monCarre.translate(2.0, 3.0);
+
+        Point p = new Point(3.0, 4.0);
+        System.out.println("Contient P ? " + monCarre.contient(p));
+
     }
+
 
 }
