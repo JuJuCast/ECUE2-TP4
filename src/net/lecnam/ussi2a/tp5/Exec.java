@@ -12,12 +12,14 @@ public class Exec {
 
         Rectangle r = new Rectangle(2, 3, 1.2, 9);
         Disque d = new Disque(0, 0, 5); // Surface ≈ 78.54
+        Point point = new Point(0,0);
 
         dessin.ajout(r);
         dessin.ajout(d);
 
         System.out.println("Surface totale : " + dessin.retourneSurfaceTotale());
         System.out.println("Plus grande figure : " + dessin.retournePlusGrand());
+        System.out.println("Le point est contenu dans les figures: "+dessin.contient(point));
     }
 
 }
