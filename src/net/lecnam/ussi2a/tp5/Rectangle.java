@@ -1,21 +1,44 @@
 package net.lecnam.ussi2a.tp5;
 
-public class Rectangle extends Figures {
+public class Rectangle extends Figures implements Inclinable {
+    protected double longueur;
+    protected double largeur;
+    protected Point point;
+    protected double angle;
 
-    double longueur;
-    double largeur;
-    Point point;
+    // Constructeurs existants
+    public Rectangle(double longueur, double largeur, Point point) {
+        this(longueur, largeur, point, 0.0);
+    }
 
-    Rectangle(double longueur, double largeur, Point point) {
+    public Rectangle(double longueur, double largeur, double x, double y) {
+        this(longueur, largeur, new Point(x, y), 0.0);
+    }
+
+    // Nouveaux constructeurs avec angle
+    public Rectangle(double longueur, double largeur, Point point, double angle) {
         this.longueur = longueur;
         this.largeur = largeur;
         this.point = point;
+        this.angle = angle;
     }
 
-    Rectangle(double longueur, double largeur, double x, double y) {
-        this(longueur, largeur, new Point(x, y));
+    public Rectangle(double longueur, double largeur, double x, double y, double angle) {
+        this(longueur, largeur, new Point(x, y), angle);
     }
 
+    // Méthodes de l'interface Inclinable
+    @Override
+    public double getAngle() {
+        return this.angle;
+    }
+
+    @Override
+    public void pivoter(double degres) {
+        this.angle += degres;
+    }
+
+    // Méthodes héritées de Figures
     @Override
     public double retourneSurface() {
         return this.longueur * this.largeur;
@@ -27,12 +50,13 @@ public class Rectangle extends Figures {
     }
 
     @Override
-    public void translate(double x, double y) {
-        this.point.translate(x, y);
+    public void translate(double dx, double dy) {
+        this.point.translate(dx, dy);
     }
 
     @Override
     public boolean contient(Point point) {
+        // Logique pour rectangle non incliné (ou déplacée depuis RectangleIncline si tu gères les angles)
         return point.x >= this.point.x
                 && point.x <= this.point.x + longueur
                 && point.y >= this.point.y
@@ -44,18 +68,15 @@ public class Rectangle extends Figures {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Rectangle rectangle = (Rectangle) object;
-        return this.point.equals(rectangle.point)
-                && this.longueur == rectangle.longueur
-                && this.largeur == rectangle.largeur;
+        return Double.compare(rectangle.longueur, longueur) == 0
+                && Double.compare(rectangle.largeur, largeur) == 0
+                && Double.compare(rectangle.angle, angle) == 0
+                && this.point.equals(rectangle.point);
     }
 
     @Override
     public String toString() {
-        return "Rectangle{" +
-                "longueur=" + longueur +
-                ", largeur=" + largeur +
-                ", point=" + point +
-                ", surface=" + this.retourneSurface() +
-                '}';
+        return "Rectangle [longueur=" + longueur + ", largeur=" + largeur
+                + ", point=" + point + ", angle=" + angle + "°]";
     }
 }

@@ -75,6 +75,11 @@ public class Exec {
         Point p = new Point(3.0, 4.0);
         System.out.println("Contient P ? " + monCarre.contient(p));
 
+        Rectangle rIncline = new Rectangle(10, 5, 0, 0, 45);
+        rIncline.pivoter(15);
+
+        System.out.println("Nouvel angle : " + rIncline.getAngle());
+
     }
 
 
